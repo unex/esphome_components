@@ -14,11 +14,9 @@ HubspaceFan = hubspace_fan_ns.class_(
 DEPENDENCIES = ["uart"]
 
 CONFIG_SCHEMA = (
-    fan.FAN_SCHEMA.extend(
-        {
-            cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(HubspaceFan),
-        }
-    )
+    fan.fan_schema(HubspaceFan).extend({
+        cv.GenerateID(CONF_OUTPUT_ID): cv.declare_id(HubspaceFan),
+    })
     .extend(cv.COMPONENT_SCHEMA)
     .extend(uart.UART_DEVICE_SCHEMA)
 )
